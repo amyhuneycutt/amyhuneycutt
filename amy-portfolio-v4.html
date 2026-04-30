@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amy Huneycutt — Learning & Knowledge Leader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── PENNY LINN + AMY PALETTE ── */
+:root {
+  --bg:          #EEE9E0;   /* PL greige page background */
+  --bg-mid:      #E5DDD2;   /* slightly deeper for section alternation */
+  --powder:      #C8DCE8;   /* PL soft powder blue (wavy bar / marquee) */
+  --powder-dark: #A8C4D8;   /* powder, a touch deeper for borders */
+  --navy:        #1B3A5C;   /* PL dark nav/header text */
+  --navy-mid:    #2B4A6B;   /* PL body text navy */
+  --green:       #00A65A;   /* Amy's green */
+  --green-light: #AEE9D1;   /* Amy's mint */
+  --green-pale:  #E6F9F2;   /* tint for backgrounds */
+  --white:       #FFFFFF;
+  --text:        #1B3A5C;
+  --body:        #2B4A6B;
+  --muted:       #5A7A96;
+  --light:       #8AAABB;
+  --border:      #D0C8BC;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--bg);
+  color:var(--body);
+  font-family:'Jost', sans-serif;
+  font-size:16px; line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── ANNOUNCEMENT BAR (PL-style) ── */
+.announce {
+  background:var(--navy);
+  color:var(--white);
+  text-align:center;
+  padding:.55rem 1rem;
+  font-size:.7rem; font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase;
+  position:fixed; top:0; left:0; right:0; z-index:300;
+}
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:30px; left:0; right:0; z-index:200;
+  background:var(--white);
+  height:60px;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 2.5rem;
+  border-bottom:1px solid var(--border);
+}
+
+.nav-logo {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.3rem; font-weight:500;
+  color:var(--navy);
+  letter-spacing:.1em;
+  display:flex; align-items:center; gap:.6rem;
+}
+/* rose SVG in nav, like PL flower logo */
+.nav-logo svg { width:26px; height:26px; color:var(--navy); }
+
+.nav-links { list-style:none; display:flex; gap:2rem; }
+.nav-links a {
+  color:var(--navy-mid); text-decoration:none;
+  font-size:.72rem; font-weight:500; letter-spacing:.14em;
+  text-transform:uppercase; transition:color .2s;
+}
+.nav-links a:hover { color:var(--green); }
+
+/* ── WAVY DIVIDER (PL signature) ── */
+.wavy {
+  width:100%; overflow:hidden;
+  line-height:0; display:block;
+}
+.wavy svg { display:block; width:100%; }
+
+/* ── MARQUEE BAR (PL-style decorative band) ── */
+.marquee-bar {
+  background:var(--powder);
+  padding:.6rem 0; overflow:hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh;
+  padding:120px 2.5rem 5rem;
+  background:var(--powder);
+  display:flex; align-items:center;
+}
+
+.hero-inner {
+  max-width:1120px; margin:0 auto;
+  display:grid; grid-template-columns:1.15fr 1fr;
+  gap:5rem; align-items:center; width:100%;
+}
+
+.hero-eyebrow {
+  font-size:.7rem; font-weight:500; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--green);
+  margin-bottom:1.1rem;
+  display:flex; align-items:center; gap:.75rem;
+}
+.hero-eyebrow::before {
+  content:''; display:inline-block;
+  width:26px; height:1px; background:var(--green);
+}
+
+.hero-name {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(3.5rem,6.5vw,5.5rem);
+  font-weight:300; line-height:1.0;
+  color:var(--navy); margin-bottom:1.5rem;
+}
+.hero-name em {
+  font-style:italic; font-weight:400; color:var(--navy-mid);
+}
+.hero-name .hl {
+  position:relative;
+}
+.hero-name .hl::after {
+  content:'';
+  position:absolute; bottom:3px; left:0; right:0; height:2px;
+  background:repeating-linear-gradient(90deg,
+    var(--green) 0, var(--green) 5px,
+    transparent 5px, transparent 9px);
+}
+
+.hero-tagline {
+  font-family:'Crimson Pro', serif;
+  font-size:1.18rem; font-style:italic;
+  color:var(--muted); line-height:1.9;
+  margin-bottom:2.5rem; max-width:480px;
+}
+
+.hero-ctas { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
+
+.btn-primary {
+  background:var(--navy); color:var(--white);
+  padding:.72rem 1.8rem; border-radius:1px;
+  text-decoration:none; font-size:.78rem;
+  font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  border:1.5px solid var(--navy);
+  transition:all .2s; display:inline-block;
+}
+.btn-primary:hover { background:var(--green); border-color:var(--green); }
+
+.btn-ghost {
+  color:var(--navy); padding:.72rem 1.8rem;
+  border:1.5px solid var(--border); border-radius:1px;
+  text-decoration:none; font-size:.78rem;
+  font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  transition:all .2s; display:inline-block;
+}
+.btn-ghost:hover { border-color:var(--green); color:var(--green); background:var(--green-pale); }
+
+/* ── EMBROIDERY HOOP ── */
+.hoop-wrap { display:flex; justify-content:center; align-items:center; }
+
+.hoop {
+  width:300px; height:300px; border-radius:50%;
+  border:11px solid var(--powder-dark);
+  box-shadow:
+    inset 0 0 0 3px var(--white),
+    inset 0 0 0 6px var(--powder),
+    0 6px 20px rgba(27,58,92,.15);
+  background:var(--white);
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:1.75rem; position:relative;
+}
+.hoop-clasp {
+  position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+  width:28px; height:28px;
+  background:var(--powder); border-radius:50%;
+  border:2px solid var(--navy-mid);
+  display:flex; align-items:center; justify-content:center;
+}
+
+.hoop-num {
+  font-family:'Cormorant Garamond', serif;
+  font-size:3.5rem; font-weight:600;
+  color:var(--navy); line-height:1;
+}
+.hoop-sub {
+  font-family:'Crimson Pro', serif; font-style:italic;
+  font-size:.87rem; color:var(--muted);
+  margin-bottom:1rem; letter-spacing:.04em;
+}
+.hoop-rule {
+  width:40px; height:1px; margin:.3rem 0 1rem;
+  background:repeating-linear-gradient(90deg,
+    var(--green) 0, var(--green) 4px,
+    transparent 4px, transparent 8px);
+}
+.hoop-pills { display:flex; flex-wrap:wrap; gap:.38rem; justify-content:center; }
+.pill {
+  font-size:.62rem; font-weight:500; letter-spacing:.05em;
+  padding:.22rem .65rem; border-radius:999px; border:1px solid;
+}
+.pill-navy  { background:var(--navy);        color:var(--white);      border-color:var(--navy); }
+.pill-green { background:var(--green-pale);  color:#005C30;           border-color:var(--green-light); }
+.pill-mint  { background:var(--green-light); color:#005C30;           border-color:var(--green); }
+.pill-powder{ background:var(--powder);      color:var(--navy);       border-color:var(--powder-dark); }
+
+/* ── WAVY + MARQUEE TRANSITION ── */
+.hero-foot {
+  background:var(--white);
+  overflow:hidden; line-height:0;
+}
+
+/* ── SECTIONS ── */
+section { padding:5.5rem 2.5rem; }
+.container { max-width:1120px; margin:0 auto; }
+
+.eyebrow {
+  font-size:.68rem; font-weight:500; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--green);
+  display:flex; align-items:center; gap:.6rem; margin-bottom:.6rem;
+}
+.eyebrow::before, .eyebrow::after {
+  content:''; height:1px; background:var(--green); width:14px; display:inline-block;
+}
+
+.section-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(1.9rem,3.8vw,2.7rem);
+  font-weight:400; color:var(--navy); line-height:1.15;
+}
+.section-title em { font-style:italic; color:var(--navy-mid); }
+
+/* ── ABOUT ── */
+#about { background:var(--bg); }
+
+.about-grid {
+  display:grid; grid-template-columns:270px 1fr;
+  gap:4rem; align-items:start;
+}
+
+.s-card {
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:2px; padding:1.35rem;
+  margin-bottom:1rem;
+}
+.s-card h3 {
+  font-size:.67rem; font-weight:500; text-transform:uppercase;
+  letter-spacing:.16em; color:var(--navy);
+  margin-bottom:.8rem; padding-bottom:.5rem;
+  border-bottom:1px solid var(--border);
+}
+.s-item { margin-bottom:.75rem; }
+.s-item:last-child { margin-bottom:0; }
+.s-school { font-weight:500; font-size:.87rem; color:var(--text); }
+.s-detail { font-size:.81rem; color:var(--muted); font-family:'Crimson Pro', serif; font-style:italic; }
+.ind-tags { display:flex; flex-wrap:wrap; gap:.38rem; }
+
+.about-body p {
+  font-family:'Crimson Pro', serif; font-size:1.08rem;
+  line-height:1.88; color:var(--body); margin-bottom:1.3rem;
+}
+.about-body p strong { color:var(--green); font-weight:500; }
+
+.exp-grid { display:grid; grid-template-columns:1fr 1fr; gap:.85rem; margin-top:1.9rem; }
+.exp-tile {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:2px; padding:1.1rem;
+  border-left:4px solid var(--green);
+}
+.exp-tile.powder { border-left-color:var(--powder-dark); }
+.exp-tile.navy   { border-left-color:var(--navy); }
+.exp-tile.mint   { border-left-color:var(--green-light); }
+.exp-tile h4 {
+  font-size:.74rem; font-weight:500; text-transform:uppercase;
+  letter-spacing:.09em; color:var(--navy); margin-bottom:.38rem;
+}
+.exp-tile p { font-size:.82rem; color:var(--muted); line-height:1.6; }
+
+/* ── EXPERIENCE ── */
+#experience { background:var(--white); }
+
+.timeline { position:relative; padding-left:2rem; }
+.timeline::before {
+  content:''; position:absolute;
+  left:0; top:8px; bottom:8px; width:1px;
+  background:repeating-linear-gradient(
+    to bottom, var(--green) 0, var(--green) 5px,
+    transparent 5px, transparent 10px);
+}
+.tl-item {
+  position:relative; margin-bottom:2.5rem;
+  padding-bottom:2.5rem;
+  border-bottom:1px dashed var(--border);
+}
+.tl-item:last-child { border-bottom:none; margin-bottom:0; }
+.tl-dot {
+  position:absolute; left:-2.45rem; top:7px;
+  width:13px; height:13px; border-radius:50%;
+  background:var(--green); border:2px solid var(--white);
+  box-shadow:0 0 0 2px var(--green);
+}
+.tl-meta { display:flex; align-items:baseline; gap:.85rem; flex-wrap:wrap; margin-bottom:.2rem; }
+.tl-co {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.2rem; font-weight:600; color:var(--navy);
+}
+.tl-yr {
+  font-size:.72rem; letter-spacing:.07em; color:var(--muted);
+  background:var(--bg); padding:.1rem .55rem;
+  border:1px solid var(--border); border-radius:1px;
+}
+.tl-role { font-size:.86rem; color:var(--green); font-weight:500; margin-bottom:.6rem; }
+.tl-body { font-size:.89rem; color:var(--body); line-height:1.7; }
+.tl-body ul { padding-left:1.2rem; margin-top:.4rem; }
+.tl-body li { margin-bottom:.3rem; }
+
+/* ── PROJECTS ── */
+#projects { background:var(--bg); }
+
+.proj-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; }
+.proj-card {
+  background:var(--white); border:1px solid var(--border);
+  border-radius:2px; overflow:hidden;
+  transition:transform .2s, box-shadow .2s;
+  box-shadow:3px 3px 0 var(--border);
+}
+.proj-card:hover {
+  transform:translate(-2px,-2px);
+  box-shadow:5px 5px 0 var(--powder-dark);
+}
+.proj-head {
+  padding:1.4rem 1.5rem 1rem;
+  border-bottom:1px solid var(--border);
+}
+.proj-cat {
+  font-size:.66rem; text-transform:uppercase;
+  letter-spacing:.15em; font-weight:500; color:var(--green);
+  margin-bottom:.4rem;
+  display:flex; align-items:center; gap:.38rem;
+}
+.proj-cat::before {
+  content:''; width:5px; height:5px;
+  background:var(--green); border-radius:50%; display:inline-block;
+}
+.proj-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.28rem; font-weight:400;
+  color:var(--navy); line-height:1.25; margin-bottom:.33rem;
+}
+.proj-audience {
+  font-family:'Crimson Pro', serif; font-style:italic;
+  font-size:.82rem; color:var(--muted);
+}
+.proj-body { padding:1.35rem 1.5rem; }
+.proj-body p { font-size:.87rem; line-height:1.72; color:var(--body); margin-bottom:.75rem; }
+.proj-result {
+  background:var(--green-pale);
+  border-left:3px solid var(--green);
+  padding:.72rem .9rem; margin:.85rem 0;
+  border-radius:0 2px 2px 0;
+}
+.proj-result-label {
+  font-size:.62rem; text-transform:uppercase;
+  letter-spacing:.14em; font-weight:500;
+  color:#005C30; margin-bottom:.16rem;
+}
+.proj-result-value {
+  font-family:'Cormorant Garamond', serif;
+  font-size:1.05rem; font-weight:600; color:var(--navy);
+}
+.proj-tags { display:flex; flex-wrap:wrap; gap:.38rem; margin-top:.95rem; }
+.proj-tag {
+  font-size:.66rem; padding:.18rem .55rem;
+  border:1px solid var(--border); border-radius:999px;
+  color:var(--muted); background:var(--bg);
+}
+
+/* ── TOOLS ── */
+#tools { background:var(--navy); padding:4.5rem 2.5rem; }
+#tools .eyebrow { color:var(--green-light); }
+#tools .eyebrow::before, #tools .eyebrow::after { background:var(--green-light); }
+#tools .section-title { color:var(--white); margin-bottom:2.25rem; }
+#tools .section-title em { color:var(--powder); }
+
+.tools-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1.3rem;
+}
+.tool-grp {
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:2px; padding:1.35rem;
+  border-top:2.5px solid var(--green);
+}
+.tg-title {
+  font-size:.65rem; text-transform:uppercase; letter-spacing:.18em;
+  font-weight:500; color:var(--green-light);
+  margin-bottom:.85rem; padding-bottom:.48rem;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.tool-list { list-style:none; display:flex; flex-direction:column; gap:.42rem; }
+.tool-list li {
+  font-size:.85rem; color:rgba(255,255,255,.85);
+  display:flex; align-items:center; gap:.5rem;
+}
+.tool-list li::before {
+  content:''; width:4px; height:4px; border-radius:50%;
+  background:var(--green-light); flex-shrink:0;
+}
+
+/* ── CONTACT ── */
+#contact {
+  background:var(--powder);
+  text-align:center; padding:6rem 2.5rem;
+}
+.contact-inner { max-width:580px; margin:0 auto; }
+.contact-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:clamp(1.9rem,4.5vw,2.9rem);
+  font-weight:300; color:var(--navy);
+  line-height:1.2; margin-bottom:.85rem;
+}
+.contact-title em { font-style:italic; color:var(--navy-mid); font-weight:400; }
+.contact-body {
+  font-family:'Crimson Pro', serif; font-style:italic;
+  font-size:1.04rem; color:var(--navy-mid);
+  line-height:1.85; margin-bottom:2.5rem;
+}
+.contact-links { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+
+.btn-contact {
+  background:var(--navy); color:var(--white);
+  padding:.72rem 1.8rem; border-radius:1px;
+  text-decoration:none; font-size:.78rem;
+  font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  transition:all .2s; display:inline-block;
+  border:1.5px solid var(--navy);
+}
+.btn-contact:hover { background:var(--green); border-color:var(--green); }
+
+.btn-contact-ghost {
+  color:var(--navy); padding:.72rem 1.8rem;
+  border:1.5px solid var(--navy); border-radius:1px;
+  text-decoration:none; font-size:.78rem;
+  font-weight:500; letter-spacing:.1em; text-transform:uppercase;
+  transition:all .2s; display:inline-block; background:transparent;
+}
+.btn-contact-ghost:hover { background:var(--navy); color:var(--white); }
+
+/* ── FOOTER ── */
+footer {
+  background:var(--navy); color:var(--powder);
+  text-align:center; padding:1.3rem;
+  font-size:.74rem; letter-spacing:.06em;
+}
+footer em { color:var(--green-light); font-style:normal; }
+
+/* ── ANIMS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.hero-eyebrow { animation:fadeUp .55s ease .1s both; }
+.hero-name    { animation:fadeUp .6s  ease .2s both; }
+.hero-tagline { animation:fadeUp .55s ease .3s both; }
+.hero-ctas    { animation:fadeUp .55s ease .42s both; }
+.hoop-wrap    { animation:fadeUp .65s ease .22s both; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:880px){
+  .hero-inner   { grid-template-columns:1fr; }
+  .hoop-wrap    { display:none; }
+  .about-grid   { grid-template-columns:1fr; }
+  .exp-grid     { grid-template-columns:1fr; }
+  .proj-grid    { grid-template-columns:1fr; }
+  .nav-links    { display:none; }
+  .timeline     { padding-left:1.5rem; }
+  .tl-dot       { left:-2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE BAR -->
+<div class="announce">Learning &amp; Knowledge Leader · Charlotte, NC</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <!-- rose / flower logo like PL -->
+    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 4 C14 8 10 8 10 12 C10 16 13 18 16 18 C19 18 22 16 22 12 C22 8 18 8 16 4Z"/>
+      <path d="M16 18 C16 22 13 25 10 26 C12 24 12 21 14 20"/>
+      <path d="M16 18 C16 22 19 25 22 26 C20 24 20 21 18 20"/>
+      <path d="M8 14 C5 13 4 10 5 7 C7 10 10 11 11 14"/>
+      <path d="M24 14 C27 13 28 10 27 7 C25 10 22 11 21 14"/>
+      <circle cx="16" cy="14" r="2.5" fill="currentColor" opacity=".15"/>
+    </svg>
+    Amy Huneycutt
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Learning &amp; Knowledge Design</div>
+      <h1 class="hero-name"><em><span class="hl">Hello,</span></em><br>I'm Amy<br>Huneycutt.</h1>
+      <p class="hero-tagline">I build learning systems, knowledge infrastructure, and AI-forward experiences that connect to how people actually work.</p>
+
+    </div>
+    <div class="hoop-wrap">
+      <div class="hoop">
+        <div class="hoop-clasp">
+          <svg viewBox="0 0 32 32" fill="none" stroke="#1B3A5C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <path d="M16 4 C14 8 10 8 10 12 C10 16 13 18 16 18 C19 18 22 16 22 12 C22 8 18 8 16 4Z"/>
+            <path d="M16 18 C16 22 13 25 10 26 C12 24 12 21 14 20"/>
+            <path d="M16 18 C16 22 19 25 22 26 C20 24 20 21 18 20"/>
+            <path d="M8 14 C5 13 4 10 5 7 C7 10 10 11 11 14"/>
+            <path d="M24 14 C27 13 28 10 27 7 C25 10 22 11 21 14"/>
+            <circle cx="16" cy="14" r="2.5" fill="#1B3A5C" opacity=".2"/>
+          </svg>
+        </div>
+        <div class="hoop-num">15+</div>
+        <div class="hoop-sub">years in learning &amp; development</div>
+        <div class="hoop-rule"></div>
+        <div class="hoop-pills">
+          <span class="pill pill-navy">Instructional Design</span>
+          <span class="pill pill-green">Knowledge Management</span>
+          <span class="pill pill-mint">AI Readiness</span>
+          <span class="pill pill-powder">Program Management</span>
+          <span class="pill pill-navy">eLearning Dev</span>
+          <span class="pill pill-green">Blended Learning</span>
+          <span class="pill pill-mint">LMS Admin</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECORATIVE BAND -->
+<div class="marquee-bar">
+  <svg width="100%" height="28" viewBox="0 0 1440 28" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,14 C40,4 80,24 120,14 C160,4 200,24 240,14 C280,4 320,24 360,14 C400,4 440,24 480,14 C520,4 560,24 600,14 C640,4 680,24 720,14 C760,4 800,24 840,14 C880,4 920,24 960,14 C1000,4 1040,24 1080,14 C1120,4 1160,24 1200,14 C1240,4 1280,24 1320,14 C1360,4 1400,24 1440,14"
+      stroke="#1B3A5C" stroke-width="1.5" fill="none" opacity=".35"/>
+    <path d="M0,14 C40,24 80,4 120,14 C160,24 200,4 240,14 C280,24 320,4 360,14 C400,24 440,4 480,14 C520,24 560,4 600,14 C640,24 680,4 720,14 C760,24 800,4 840,14 C880,24 920,4 960,14 C1000,24 1040,4 1080,14 C1120,24 1160,4 1200,14 C1240,24 1280,4 1320,14 C1360,24 1400,4 1440,14"
+      stroke="#00A65A" stroke-width="1.2" fill="none" opacity=".5"/>
+  </svg>
+</div>
+
+<!-- WAVY powder → bg -->
+<div style="background:var(--bg);line-height:0;overflow:hidden;">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:48px;">
+    <path d="M0,0 L0,28 C120,48 240,8 360,28 C480,48 600,8 720,28 C840,48 960,8 1080,28 C1200,48 1320,8 1440,28 L1440,0 Z" fill="#C8DCE8"/>
+  </svg>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="s-card">
+          <h3>Industries</h3>
+          <div class="ind-tags">
+            <span class="pill pill-navy">Technology / SaaS</span>
+            <span class="pill pill-green">Restaurant</span>
+            <span class="pill pill-green">Grocery Retail</span>
+            <span class="pill pill-powder">Aerospace</span>
+          </div>
+        </div>
+        <div class="s-card">
+          <h3>Education &amp; Certification</h3>
+          <div class="s-item">
+            <div class="s-school">Appalachian State University</div>
+            <div class="s-detail">BS, Middle Grades Education</div>
+          </div>
+          <div class="s-item">
+            <div class="s-school">ATD</div>
+            <div class="s-detail">eLearning Instructional Design Certificate</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-body">
+        <div style="margin-bottom:2.2rem">
+          <div class="eyebrow">About Me</div>
+          <h2 class="section-title" style="margin-bottom:0">I design for <em>performance,</em><br>not just completion.</h2>
+        </div>
+        <p>I started in the classroom in 2010 and moved into L&D from there — and my focus has stayed consistent ever since: figure out what people need to do well, then build the system that gets them there. The audiences have changed — new hires, field teams, corporate employees, technical support agents, external customers — but the approach hasn't.</p>
+        <p>Right now I lead the learning and knowledge function at PAR Technology, managing a team of four across instructional design, facilitation, content development, and knowledge operations. A lot of my focus is on building a four-tier learning ecosystem, governing a 4,100+ article knowledge base, and figuring out where <strong>AI and automation</strong> fit meaningfully into that work. I've built an agent to automate knowledge article authoring, used AI for duplicate detection across our library, and led the selection of Clueso as our video production platform for AI-assisted script and article creation.</p>
+        <p>At heart I'm a practical optimizer. I like figuring out how things should work and then building the structure to make it happen.</p>
+        <div class="exp-grid">
+          <div class="exp-tile">
+            <h4>Learning Design</h4>
+            <p>ADDIE, SAM, Bloom's, Kirkpatrick, Action Mapping, 5 Moments of Need — built into how I think, not applied at the end.</p>
+          </div>
+          <div class="exp-tile powder">
+            <h4>Knowledge Management</h4>
+            <p>Taxonomy design, content migration, governance, KCS methodology, and AI grounding for the knowledge base.</p>
+          </div>
+          <div class="exp-tile mint">
+            <h4>AI Integration</h4>
+            <p>Building practical AI workflows into learning and knowledge operations — not just talking about it.</p>
+          </div>
+          <div class="exp-tile navy">
+            <h4>Program Management</h4>
+            <p>Stakeholder alignment, cross-functional delivery, and scope management across complex orgs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVY bg → white -->
+<div style="background:var(--white);line-height:0;overflow:hidden;">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:48px;">
+    <path d="M0,0 L0,28 C180,8 360,48 540,28 C720,8 900,48 1080,28 C1260,8 1380,48 1440,28 L1440,0 Z" fill="#EEE9E0"/>
+  </svg>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="eyebrow">Career</div>
+    <h2 class="section-title" style="margin-bottom:2.75rem">Where I've <em>done the work.</em></h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-meta">
+          <span class="tl-co">PAR Technology</span>
+          <span class="tl-yr">2024 – Present</span>
+        </div>
+        <div class="tl-role">Manager, Learning &amp; Knowledge</div>
+        <div class="tl-body"><ul>
+          <li>Lead a team of four across instructional design, facilitation, content development, and knowledge operations — serving both a 240-agent technical support org and external customers</li>
+          <li>Designed and launched two product certification programs for external customers, supporting onboarding, activation, and product adoption across product lines</li>
+          <li>Developed enablement strategies that improved customer readiness and reduced friction in product adoption; built reusable content frameworks to improve consistency and scalability</li>
+          <li>Drive roadmap planning across onboarding, role-based learning, product training, and learning operations maturity — partnering with Support leadership, SMEs, and Product to align strategy with business needs</li>
+          <li>Building a four-tier internal learning ecosystem with competency maps and role-based curriculum for L1 agents, L2 specialists, team leads, and managers</li>
+          <li>Govern a 4,100+ article knowledge base — leading the migration from RightAnswers to Salesforce Knowledge, including taxonomy redesign, deduplication, and content governance</li>
+          <li>Built an AI agent to automate knowledge article authoring; used AI for duplicate detection and library cleanup at scale</li>
+          <li>Drove consolidation of multiple LMS platforms into Intellum, creating a unified learning experience across products; led selection of Clueso for AI-assisted video and article creation</li>
+        </ul></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-meta">
+          <span class="tl-co">MOD Pizza</span>
+          <span class="tl-yr">2023 – 2024</span>
+        </div>
+        <div class="tl-role">Learning Program Manager</div>
+        <div class="tl-body"><ul>
+          <li>Built and managed a learning strategy for 10,000+ field team members across 300+ locations, partnering across Operations, Talent, People, and Field teams</li>
+          <li>Designed personalized learning experiences targeting specific job requirements and operational gaps identified through needs analysis</li>
+          <li>Rolled out training programs for new hires, role transitions, and cross-functional teams</li>
+        </ul></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-meta">
+          <span class="tl-co">Ahold Delhaize USA</span>
+          <span class="tl-yr">2020 – 2023</span>
+        </div>
+        <div class="tl-role">Learning Specialist</div>
+        <div class="tl-body"><ul>
+          <li>Designed learning solutions for approximately 250,000 associates across home office, store teams, and distribution centers</li>
+          <li>Owned and managed 115+ compliance, legal, and regulatory courses</li>
+          <li>Developed compliance, leadership, and software simulation courses; produced and facilitated VILT</li>
+        </ul></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-meta">
+          <span class="tl-co">The Fresh Market</span>
+          <span class="tl-yr">2016 – 2019</span>
+        </div>
+        <div class="tl-role">Instructional Designer</div>
+        <div class="tl-body"><ul>
+          <li>Designed and implemented eLearning for 12,000+ team members — onboarding, compliance, food safety, and department-specific training</li>
+          <li>Helped the company save $1.2M in reduced on-the-job injuries and recovered $150K in maintenance costs through targeted safety courses</li>
+          <li>Worked with leadership to track metrics and measure training impact against business goals</li>
+        </ul></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-meta">
+          <span class="tl-co">Honda Aircraft Company</span>
+          <span class="tl-yr">2013 – 2016</span>
+        </div>
+        <div class="tl-role">Technical Training Coordinator</div>
+        <div class="tl-body"><ul>
+          <li>Partnered with IT to implement a SharePoint-based LMS, moving training records from paper to digital for 800+ employees</li>
+          <li>Maintained FAA-audited certifications and digital training content across technical training, manufacturing, and manufacturing engineering</li>
+        </ul></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WAVY white → bg -->
+<div style="background:var(--bg);line-height:0;overflow:hidden;">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:48px;">
+    <path d="M0,0 L0,28 C180,48 360,8 540,28 C720,48 900,8 1080,28 C1260,48 1380,8 1440,28 L1440,0 Z" fill="#FFFFFF"/>
+  </svg>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="eyebrow">Selected Work</div>
+    <h2 class="section-title" style="margin-bottom:2.6rem">Projects that <em>moved the needle.</em></h2>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-head">
+          <div class="proj-cat">Customer Education + Product Enablement</div>
+          <h3 class="proj-title">Customer Education Program</h3>
+          <div class="proj-audience">External customers · product, support, and customer-facing teams</div>
+        </div>
+        <div class="proj-body">
+          <p>Built the customer education function at PAR from the ground up — designing certification programs, onboarding experiences, and reusable content frameworks that supported product adoption across two product lines. The work spanned strategy through execution: partnering with Product, Support, and Customer Success to align content with real customer needs, then building the infrastructure to deliver it at scale.</p>
+          <div class="proj-result">
+            <div class="proj-result-label">Delivered</div>
+            <div class="proj-result-value">2 product certification programs · scalable content frameworks · LMS consolidation into Intellum</div>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Customer Education</span><span class="proj-tag">Certification Design</span><span class="proj-tag">Intellum</span><span class="proj-tag">Product Adoption</span><span class="proj-tag">Content Strategy</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head">
+          <div class="proj-cat">Knowledge Management</div>
+          <h3 class="proj-title">Salesforce Knowledge Migration</h3>
+          <div class="proj-audience">Customer Support, Product, Professional Services, Customer Success</div>
+        </div>
+        <div class="proj-body">
+          <p>4,100+ knowledge articles migrated from RightAnswers to Salesforce Knowledge — but this wasn't a lift-and-shift. It required taxonomy redesign, cross-functional alignment across four stakeholder groups, content governance decisions, deduplication work, and a QA process to make sure the new system actually served the agents relying on it every day.</p>
+          <div class="proj-result">
+            <div class="proj-result-label">Scale</div>
+            <div class="proj-result-value">4,100+ articles · 4 stakeholder groups · full platform rebuild</div>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Salesforce Knowledge</span><span class="proj-tag">Taxonomy Design</span><span class="proj-tag">Content Governance</span><span class="proj-tag">Stakeholder Management</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head">
+          <div class="proj-cat">Blended Learning</div>
+          <h3 class="proj-title">Navigating Change Program</h3>
+          <div class="proj-audience">Corporate associates — ICs to managers</div>
+        </div>
+        <div class="proj-body">
+          <p>The company went through a major reorganization and needed associates to understand how to lead themselves — and their teams — through it. I designed a blended program bringing ADKAR and Bridges models to life through realistic scenarios: eLearning, VILT via Adobe Connect, LinkedIn Learning microlearning, and InDesign reflection guides. Evaluation was baked in from the start.</p>
+          <div class="proj-result">
+            <div class="proj-result-label">Learner outcome</div>
+            <div class="proj-result-value">28% increase in confidence navigating change</div>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Articulate Storyline</span><span class="proj-tag">Adobe Connect</span><span class="proj-tag">Adobe InDesign</span><span class="proj-tag">LinkedIn Learning</span><span class="proj-tag">Kirkpatrick</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-head">
+          <div class="proj-cat">eLearning + Performance Support</div>
+          <h3 class="proj-title">Cut Glove Safety Training</h3>
+          <div class="proj-audience">Grocery retail team members — fresh departments</div>
+        </div>
+        <div class="proj-body">
+          <p>Cut incidents were trending up over three years. The root cause was straightforward — new hires weren't getting adequate store-level training. I designed a branching eLearning that let experienced workers go straight to assessment while walking newer hires through four structured topics, including a guided simulation of putting on and using a cut glove correctly.</p>
+          <div class="proj-result">
+            <div class="proj-result-label">Year-one impact</div>
+            <div class="proj-result-value">75% reduction in cut incidents · $1.2M cost savings</div>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Lectora</span><span class="proj-tag">Adobe Audition</span><span class="proj-tag">Adobe Illustrator</span><span class="proj-tag">Scenario Design</span><span class="proj-tag">Data Analysis</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WAVY bg → navy -->
+<div style="background:var(--navy);line-height:0;overflow:hidden;">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:48px;">
+    <path d="M0,0 L0,28 C240,8 480,48 720,28 C960,8 1200,48 1440,28 L1440,0 Z" fill="#EEE9E0"/>
+  </svg>
+</div>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="container">
+    <div class="eyebrow">Toolkit</div>
+    <h2 class="section-title">What I <em>work with.</em></h2>
+    <div class="tools-grid">
+      <div class="tool-grp">
+        <div class="tg-title">eLearning Authoring</div>
+        <ul class="tool-list">
+          <li>Articulate Storyline</li><li>Articulate Rise</li><li>Lectora</li><li>Clueso</li><li>Camtasia</li>
+        </ul>
+      </div>
+      <div class="tool-grp">
+        <div class="tg-title">Knowledge &amp; LMS</div>
+        <ul class="tool-list">
+          <li>Salesforce Knowledge</li><li>Intellum</li><li>Jira</li><li>Confluence</li>
+        </ul>
+      </div>
+      <div class="tool-grp">
+        <div class="tg-title">Design &amp; Media</div>
+        <ul class="tool-list">
+          <li>Adobe Creative Suite</li><li>Adobe Illustrator</li><li>Adobe InDesign</li><li>Canva</li>
+        </ul>
+      </div>
+      <div class="tool-grp">
+        <div class="tg-title">AI &amp; Productivity</div>
+        <ul class="tool-list">
+          <li>Claude / ChatGPT</li><li>AI knowledge article authoring</li><li>AI-assisted content workflows</li><li>Microsoft 365</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVY navy → powder -->
+<div style="background:var(--powder);line-height:0;overflow:hidden;">
+  <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:48px;">
+    <path d="M0,0 L0,28 C240,48 480,8 720,28 C960,48 1200,8 1440,28 L1440,0 Z" fill="#1B3A5C"/>
+  </svg>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <svg width="64" height="64" viewBox="0 0 32 32" fill="none" stroke="#1B3A5C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 1.75rem;display:block" aria-hidden="true">
+      <path d="M16 4 C14 8 10 8 10 12 C10 16 13 18 16 18 C19 18 22 16 22 12 C22 8 18 8 16 4Z"/>
+      <path d="M16 18 C16 22 13 25 10 26 C12 24 12 21 14 20"/>
+      <path d="M16 18 C16 22 19 25 22 26 C20 24 20 21 18 20"/>
+      <path d="M8 14 C5 13 4 10 5 7 C7 10 10 11 11 14"/>
+      <path d="M24 14 C27 13 28 10 27 7 C25 10 22 11 21 14"/>
+      <circle cx="16" cy="14" r="2.5" fill="#1B3A5C" opacity=".15"/>
+    </svg>
+    <h2 class="contact-title">Let's build something<br><em>worth learning.</em></h2>
+    <p class="contact-body">I'm open to new opportunities in L&D leadership, knowledge management, and AI readiness — preferably remote or hybrid in the Charlotte, NC area.</p>
+    <div class="contact-links">
+      <a href="mailto:amyhuneycutt13@gmail.com" class="btn-contact">amyhuneycutt13@gmail.com</a>
+      <a href="https://linkedin.com/in/amyhuneycutt" class="btn-contact-ghost" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>Amy Huneycutt &nbsp;·&nbsp; <em>Charlotte, NC</em> &nbsp;·&nbsp; Learning &amp; Knowledge Design</footer>
+
+</body>
+</html>
